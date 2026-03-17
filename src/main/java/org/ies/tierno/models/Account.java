@@ -2,7 +2,9 @@ package org.ies.tierno.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @AllArgsConstructor
 @Data
 public class Account {
@@ -14,5 +16,14 @@ public class Account {
         balance+=amount;
     }
 
+    public boolean withdraw (double amount){
+        if (balance>= amount){
+        balance-=amount;
+        return true;
+        } else {
+            log.info("No hay saldo suficiente");
+            return false;
+        }
+    }
 
 }
